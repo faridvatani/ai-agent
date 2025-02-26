@@ -20,6 +20,19 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Set up a Convex dev deployment
+
+Next, run the following command:
+
+```bash
+npx convex dev
+```
+
+This will prompt you to log in with GitHub, create a project, and save your production and deployment URLs.
+
+It will also create a `convex/` folder for you to write your backend API functions in. The dev command will then continue running to sync your functions with your dev deployment in the cloud.
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
