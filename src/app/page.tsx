@@ -1,101 +1,84 @@
-import Image from "next/image";
+import { BackgroundLines } from "@/components/ui/background-lines";
+import FeatureCard from "@/components/ui/FeatureCard";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { ArrowRight, Bot, Rocket, Sparkles } from "lucide-react";
+import Link from "next/link";
+
+const featureCards = [
+  {
+    title: "Fast",
+    description: "Real-time streamed responses",
+    icon: <Rocket />,
+  },
+  {
+    title: "Modern",
+    description: "Next.js 15, Tailwind CSS, Convex, Clerk",
+    icon: <Sparkles />,
+  },
+  {
+    title: "Smart",
+    description: "Powered by Your Favourite LLM's",
+    icon: <Bot />,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <BackgroundLines>
+      <main className="min-h-screen bg-black/90 flex flex-col justify-center items-center">
+        <section className="w-full px-4 py-8 mx-auto max-w-6xl sm:px-6 lg:px-8 flex flex-col items-center space-y-5 text-center bg-white/95 backdrop-blur-lg rounded-full">
+          {/* Hero content */}
+          <header className="space-y-2">
+            <h1 className="text-5xl font-bold tracking-tight sm:leading-tight sm:text-7xl bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+              AI Agent Assistant
+            </h1>
+            <p className="max-w-[600px] text-lg text-gray-600 md:text-xl/relaxed xl:text-2xl/relaxed">
+              Discover your AI chat assistant that not only converses but also
+              accomplishes tasks!
+            </p>
+          </header>
+          {/* CTA Button */}
+          <SignedIn>
+            <Link href="/dashboard">
+              <button className="group relative inline-flex items-center justify-center px-8 py-2 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-md hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                Get Started
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                <div className="absolute inset-0 rounded-md bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+            </Link>
+          </SignedIn>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+          <SignedOut>
+            <SignInButton
+              mode="modal"
+              fallbackRedirectUrl={"/dashboard"}
+              forceRedirectUrl={"/dashboard"}
+            >
+              <button className="group relative inline-flex items-center justify-center px-8 py-2 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-md hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                Sign Up
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                <div className="absolute inset-0 rounded-md bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+            </SignInButton>
+          </SignedOut>
+        </section>
+        {/* Features grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 pt-8 max-w-3xl mx-auto">
+          {featureCards.map(({ title, description, icon }) => (
+            <FeatureCard
+              key={title}
+              title={title}
+              description={description}
+              icon={icon}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          ))}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="relative bottom-0 w-full p-4 text-center text-gray-500">
+        <span className="text-gray-400 text-sm">
+          Powered by IBM&apos;s WxTools & your preferred LLM&apos;s.
+        </span>
       </footer>
-    </div>
+    </BackgroundLines>
   );
 }
