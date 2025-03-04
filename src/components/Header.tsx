@@ -3,10 +3,14 @@
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { useNavigation } from "@/lib/context/navigation";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
-  const { setIsMobileNavOpen } = useNavigation();
+  const { isMobileNavOpen, setIsMobileNavOpen } = useNavigation();
+
+  const handleNavToggle = () => {
+    setIsMobileNavOpen(!isMobileNavOpen);
+  };
 
   return (
     <header className="border-b border-gray-200/50 bg-white/80 backdrop-blur-xl sticky top-0 z-50">
@@ -15,10 +19,14 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setIsMobileNavOpen(true)}
+            onClick={handleNavToggle}
             className="md:hidden text-gray-500 hover:text-gray-700 hover:bg-gray-100/50"
           >
-            <Menu className="h-5 w-5" />
+            {isMobileNavOpen ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
           </Button>
           <div className="text-xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
             AI Agent
