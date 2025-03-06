@@ -8,6 +8,7 @@ import { PlusIcon } from "lucide-react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Id } from "../../convex/_generated/dataModel";
+import ChatRow from "./ChatRow";
 
 export default function Sidebar() {
   const router = useRouter();
