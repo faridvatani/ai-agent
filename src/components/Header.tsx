@@ -4,6 +4,7 @@ import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { useNavigation } from "@/lib/context/navigation";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
   const { isMobileNavOpen, setIsMobileNavOpen } = useNavigation();
@@ -28,9 +29,13 @@ export default function Header() {
               <Menu className="size-5" />
             )}
           </Button>
-          <div className="text-xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          <Link
+            href="/dashboard"
+            passHref
+            className="text-xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
+          >
             AI Agent
-          </div>
+          </Link>
         </div>
         <div className="flex items-center">
           <UserButton

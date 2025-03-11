@@ -2,7 +2,7 @@ import { BotIcon } from "lucide-react";
 
 export default function DashboardPage() {
   return (
-    <div className="flex-1 flex items-center justify-center p-4">
+    <div className="flex-1 flex items-center justify-center p-4 min-h-full">
       <div className="relative max-w-2xl w-full">
         {/* Decorative elements */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-gray-100 to-gray-50/50 rounded-3xl"></div>
