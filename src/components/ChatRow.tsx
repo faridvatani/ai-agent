@@ -1,7 +1,7 @@
-import { Doc, Id } from "../../convex/_generated/dataModel";
+import { Doc, Id } from "@/convex/_generated/dataModel";
 import { useRouter } from "next/navigation";
 import { useNavigation } from "@/lib/context/navigation";
-// import { api } from "../../convex/_generated/api";
+// import { api } from "@/convex/_generated/api";
 // import { useQuery } from "convex/react";
 import { Button } from "./ui/button";
 import { TrashIcon } from "lucide-react";
