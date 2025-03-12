@@ -10,6 +10,8 @@ import {
   StreamMessage,
   StreamMessageType,
 } from "@/lib/types";
+import { api } from "@/convex/_generated/api";
+import { AIMessage, HumanMessage } from "@langchain/core/messages";
 
 export const runtime = "edge";
 
@@ -71,6 +73,7 @@ export async function POST(req: Request) {
           ),
           new HumanMessage(newMessage),
         ];
+
         
       } catch (error) {
         console.error("Error in chat API:", error);

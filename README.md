@@ -32,6 +32,38 @@ This will prompt you to log in with GitHub, create a project, and save your prod
 
 It will also create a `convex/` folder for you to write your backend API functions in. The dev command will then continue running to sync your functions with your dev deployment in the cloud.
 
+## Getting Started with IBM Watsonx.ai Flows Engine
+
+Follow these steps to set up your project using wxflows:
+
+Setup
+
+1. Sign Up & Authenticate: Create a free account, install the CLI for Python or Node.js, and log in to your account.
+
+2. Create a Folder: Create a folder named wxflows.
+
+3. Initialize Project:
+
+```
+wxflows init --endpoint=api/ai-agent
+```
+
+4. Install Pre-built Tools:
+   From the [IBM wxflows tools repository](https://github.com/IBM/wxflows/blob/main/tools/README.md), import tools like Wikipedia, Google books, Math, YouTube Transcript and etc. For example:
+
+```
+wxflows import tool https://raw.githubusercontent.com/IBM/wxflows/refs/heads/main/tools/wikipedia.zip
+wxflows import tool https://raw.githubusercontent.com/IBM/wxflows/refs/heads/main/tools/youtube_transcript.zip
+wxflows import tool https://raw.githubusercontent.com/IBM/wxflows/refs/heads/main/tools/math.zip
+wxflows import curl https://dummyjson.com/comments
+wxflows import curl https://introspection.apis.stepzen.com/customers
+```
+
+5. Deploy the tools:
+
+```
+wxflows deploy
+```
 
 ## Learn More
 

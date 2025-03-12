@@ -1,0 +1,15 @@
+schema
+  @sdl(
+    files: [
+      "wikipedia/index.graphql"
+      "tools.graphql"
+      "google_books/index.graphql"
+      "youtube_transcript/index.graphql"
+      "math/index.graphql"
+      # I renamed these folders to be more descriptive(default name is curl)
+      "dummyjson_comments/index.graphql" # wxflows import curl https://dummyjson.com/comments
+      "introspection_customers/index.graphql" # wxflows import curl https://introspection.apis.stepzen.com/customers
+    ]
+  ) {
+  query: Query
+}
