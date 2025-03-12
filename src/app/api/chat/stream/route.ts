@@ -62,8 +62,16 @@ export async function POST(req: Request) {
           content: newMessage,
         });
 
-        // TODO: Convert messages to LangChain format
-
+        // Convert messages to LangChain format
+        const langChainMessages = [
+          ...messages.map((msg) =>
+            msg.role === "user"
+              ? new HumanMessage(msg.content)
+              : new AIMessage(msg.content),
+          ),
+          new HumanMessage(newMessage),
+        ];
+        
       } catch (error) {
         console.error("Error in chat API:", error);
         return NextResponse.json(
