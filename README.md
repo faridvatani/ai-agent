@@ -64,6 +64,11 @@ wxflows import curl https://introspection.apis.stepzen.com/customers
 ```
 wxflows deploy
 ```
+## Keywords
+✅ **LangChain:** A framework for working with large language models (LLMs) that enables the use of tools, conversation history management, and more.<br>
+✅ **LangGraph:** A tool for managing conversation flow and states using state graphs (StateGraph).<br>
+✅ **systemMessage:** A message that instructs the model on how it should behave (such as guidelines or rules).<br>
+✅ **Prompt Caching:** Storing requests and responses to speed up future conversations.
 
 ## Learn More
 
