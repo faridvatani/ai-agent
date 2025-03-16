@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { getConvexClient } from "@/lib/convex";
 import { ChatRequestBody } from "@/lib/types";
+import { createSSEParser } from "@/lib/SSEParser";
 
 interface ChatInterfaceProps {
   chatId: Id<"chats">;
@@ -75,7 +76,13 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
       if (!response.ok) throw new Error(await response.text());
       if (!response.body) throw new Error("No response body available");
 
-      // ----------- TODO: Handle streaming response -----------
+      // Create SSE parser and stream reader
+      const parser = createSSEParser();
+      const reader = response.body.getReader();
+
+
+       // Process the stream chunks
+       
     } catch (error) {
       // Handle any errors during streaming
       console.error("Error sending message:", error);
