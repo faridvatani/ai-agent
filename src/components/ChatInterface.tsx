@@ -8,6 +8,7 @@ import { getConvexClient } from "@/lib/convex";
 import { ChatRequestBody, StreamMessageType } from "@/lib/types";
 import { createSSEParser } from "@/lib/SSEParser";
 import { api } from "@/convex/_generated/api";
+import { MessageBubble } from "./MessageBubble";
 
 interface ChatInterfaceProps {
   chatId: Id<"chats">;
@@ -39,7 +40,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
     input: unknown,
     output: unknown,
   ) => {
-    const terminalHtml = `<code class="bg-[#1e1e1e] text-white font-mono p-2 rounded-md my-2 overflow-x-auto whitespace-normal max-w-[600px]">
+    const terminalHtml = `<div class="bg-[#1e1e1e] text-white font-mono p-2 rounded-md my-2 overflow-x-auto whitespace-normal max-w-[600px]">
       <div class="flex items-center gap-1.5 border-b border-gray-700 pb-1">
         <span class="text-red-500">●</span>
         <span class="text-yellow-500">●</span>
@@ -54,7 +55,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
       <pre class="text-green-400 mt-0.5 whitespace-pre-wrap overflow-x-auto">${formatToolOutput(
         output,
       )}</pre>
-    </code>`;
+    </div>`;
 
     return `---START---\n${terminalHtml}\n---END---`;
   };
@@ -239,7 +240,17 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
       {/* Messages container */}
       <section className="flex-1 overflow-y-auto bg-gray-50 p-2 md:p-0">
         <div className="max-w-4xl mx-auto p-4 space-y-3">
-          {/* TODO: WelcomeMessage  component*/}
+          {messages?.length === 0 && "<WelcomeMessage />"}
+
+          {messages?.map((message: Doc<"messages">) => (
+            <MessageBubble
+              key={message._id}
+              content={message.content}
+              isUser={message.role === "user"}
+            />
+          ))}
+
+          {streamedResponse && <MessageBubble content={streamedResponse} />}
 
           {/* Loading indicator */}
           {isLoading && !streamedResponse && (

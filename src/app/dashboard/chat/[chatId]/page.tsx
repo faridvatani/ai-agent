@@ -11,7 +11,7 @@ interface ChatPageProps {
   };
 }
 
-export default async function page({ params }: ChatPageProps) {
+export default async function ChatPage({ params }: ChatPageProps) {
   const { chatId } = await params;
 
   // Get user authentication

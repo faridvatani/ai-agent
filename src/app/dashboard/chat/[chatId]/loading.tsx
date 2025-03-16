@@ -18,7 +18,7 @@ export default function Loading() {
                 <div
                   className={`w-2/3 rounded-2xl p-4 ${
                     i % 2 === 0
-                      ? "bg-blue-600/10 rounded-br-none"
+                      ? "bg-gray-600/10 rounded-br-none"
                       : "bg-white rounded-bl-none border border-gray-200"
                   }`}
                 >
