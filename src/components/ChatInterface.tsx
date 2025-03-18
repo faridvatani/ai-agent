@@ -237,7 +237,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
   };
 
   return (
-    <main className="flex flex-col h-[calc(100vh-theme(spacing.14))]">
+    <main className="flex flex-col h-[calc(100vh-(--spacing(14)))]">
       {/* Messages container */}
       <section className="flex-1 overflow-y-auto bg-gray-50 p-2 md:p-0">
         <div className="max-w-4xl mx-auto p-4 space-y-3">
@@ -256,12 +256,12 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
           {/* Loading indicator */}
           {isLoading && !streamedResponse && (
             <div className="flex justify-start animate-in fade-in-0">
-              <div className="rounded-2xl px-4 py-3 bg-white text-gray-900 rounded-bl-none shadow-sm ring-1 ring-inset ring-gray-200">
+              <div className="rounded-2xl px-4 py-3 bg-white text-gray-900 rounded-bl-none shadow-xs ring-1 ring-inset ring-gray-200">
                 <div className="flex items-center gap-1.5">
                   {[0.3, 0.15, 0].map((delay, i) => (
                     <div
                       key={i}
-                      className="h-1.5 w-1.5 rounded-full bg-gray-400 animate-bounce"
+                      className="size-1.5 rounded-full bg-gray-400 animate-bounce"
                       style={{ animationDelay: `-${delay}s` }}
                     />
                   ))}
@@ -282,15 +282,15 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Message AI Agent..."
-              className="flex-1 py-3 px-4 rounded-2xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent pr-12 bg-gray-50 placeholder:text-gray-500"
+              className="flex-1 py-3 px-4 rounded-2xl border border-gray-200 focus:outline-hidden focus:ring-2 focus:ring-gray-500 focus:border-transparent pr-12 bg-gray-50 placeholder:text-gray-500"
               disabled={isLoading}
             />
             <Button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className={`absolute right-1.5 rounded-xl h-9 w-9 p-0 flex items-center justify-center transition-all ${
+              className={`absolute right-1.5 rounded-xl size-9 p-0 flex items-center justify-center transition-all ${
                 input.trim()
-                  ? "bg-gray-600 hover:bg-gray-700 text-white shadow-sm"
+                  ? "bg-gray-600 hover:bg-gray-700 text-white shadow-xs"
                   : "bg-gray-100 text-gray-400"
               }`}
             >

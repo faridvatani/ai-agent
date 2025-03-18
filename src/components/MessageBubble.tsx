@@ -46,12 +46,12 @@ export function MessageBubble({ content, isUser }: MessageBubbleProps) {
           }`}
         >
           <div
-            className={`w-8 h-8 rounded-full border-2 ${
+            className={`size-8 rounded-full border-2 ${
               isUser ? "bg-white border-gray-100" : "bg-gray-600 border-white"
             } flex items-center justify-center shadow-sm`}
           >
             {isUser ? (
-              <Avatar className="h-7 w-7">
+              <Avatar className="size-7">
                 <AvatarImage src={user?.imageUrl} />
                 <AvatarFallback>
                   {user?.firstName?.charAt(0)}
@@ -59,7 +59,7 @@ export function MessageBubble({ content, isUser }: MessageBubbleProps) {
                 </AvatarFallback>
               </Avatar>
             ) : (
-              <BotIcon className="h-5 w-5 text-white" />
+              <BotIcon className="size-5 text-white" />
             )}
           </div>
         </div>

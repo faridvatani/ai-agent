@@ -30,7 +30,7 @@ export default function Home() {
         <section className="w-full px-4 py-8 mx-auto max-w-6xl sm:px-6 lg:px-8 flex flex-col items-center space-y-5 text-center bg-white/95 backdrop-blur-lg rounded-full">
           {/* Hero content */}
           <header className="space-y-2">
-            <h1 className="text-5xl font-bold tracking-tight sm:leading-tight sm:text-7xl bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold tracking-tight sm:leading-tight sm:text-7xl bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
               AI Agent Assistant
             </h1>
             <p className="max-w-[600px] text-lg text-gray-600 md:text-xl/relaxed xl:text-2xl/relaxed">
@@ -41,10 +41,10 @@ export default function Home() {
           {/* CTA Button */}
           <SignedIn>
             <Link href="/dashboard">
-              <Button className="group relative inline-flex items-center justify-center px-8 py-2 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-md hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              <Button className="group relative inline-flex items-center justify-center px-8 py-2 text-base font-medium text-white bg-linear-to-r from-gray-900 to-gray-800 rounded-md hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                 Get Started
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                <div className="absolute inset-0 rounded-md bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-0.5" />
+                <div className="absolute inset-0 rounded-md bg-linear-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </Button>
             </Link>
           </SignedIn>
@@ -55,10 +55,10 @@ export default function Home() {
               fallbackRedirectUrl={"/dashboard"}
               forceRedirectUrl={"/dashboard"}
             >
-              <Button className="group relative inline-flex items-center justify-center px-8 py-2 text-base font-medium text-white bg-gradient-to-r from-gray-900 to-gray-800 rounded-md hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              <Button className="group relative inline-flex items-center justify-center px-8 py-2 text-base font-medium text-white bg-linear-to-r from-gray-900 to-gray-800 rounded-md hover:from-gray-800 hover:to-gray-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                 Sign Up
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                <div className="absolute inset-0 rounded-md bg-gradient-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-0.5" />
+                <div className="absolute inset-0 rounded-md bg-linear-to-r from-gray-900/20 to-gray-800/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
               </Button>
             </SignInButton>
           </SignedOut>

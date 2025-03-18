@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-gray-200/50 bg-white/80 backdrop-blur-xl sticky top-0 z-50">
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-3">
           <Button
             variant="ghost"
@@ -32,7 +32,7 @@ export default function Header() {
           <Link
             href="/dashboard"
             passHref
-            className="text-xl font-semibold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
+            className="text-xl font-semibold bg-linear-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
           >
             AI Agent
           </Link>
@@ -42,7 +42,7 @@ export default function Header() {
             appearance={{
               elements: {
                 avatarBox:
-                  "h-8 w-8 ring-2 ring-gray-200/50 ring-offset-2 rounded-full transition-shadow hover:ring-gray-300/50",
+                  "size-8 ring-2 ring-gray-200/50 ring-offset-2 rounded-full transition-shadow hover:ring-gray-300/50",
               },
             }}
           />

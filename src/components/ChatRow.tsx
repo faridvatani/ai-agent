@@ -27,7 +27,7 @@ export default function ChatRow({
 
   return (
     <div
-      className="group rounded-xl border border-gray-200/30 bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+      className="group rounded-xl border border-gray-200/30 bg-white/50 backdrop-blur-xs hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
       onClick={handleClick}
     >
       <div className="p-4">
@@ -51,7 +51,7 @@ export default function ChatRow({
               onDelete(chat._id);
             }}
           >
-            <TrashIcon className="h-4 w-4 text-gray-400 hover:text-red-500 transition-colors" />
+            <TrashIcon className="size-4 text-gray-400 hover:text-red-500 transition-colors" />
           </Button>
         </div>
         {lastMessage && (

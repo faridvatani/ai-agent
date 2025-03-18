@@ -8,7 +8,7 @@ interface FeatureCardProps {
 
 const FeatureCard: FC<FeatureCardProps> = ({ title, description, icon }) => (
   <div className="text-center">
-    <div className="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 text-black p-4">
+    <div className="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-slate-100 text-black p-4">
       {icon}
     </div>
     <h3 className="text-2xl font-semibold text-slate-100">{title}</h3>
