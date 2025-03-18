@@ -11,7 +11,11 @@ export default function WelcomeMessage() {
         <ul className="space-y-2 text-gray-600">
           <li className="flex items-start gap-2">
             <span className="text-gray-500 mt-1">•</span>
-            <span>Finding and analyzing YouTube video transcripts</span>
+            <span>assesting with math agent</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-gray-500 mt-1">•</span>
+            <span>Searching through Wikipedia</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-gray-500 mt-1">•</span>
@@ -28,6 +32,10 @@ export default function WelcomeMessage() {
           <li className="flex items-start gap-2">
             <span className="text-gray-500 mt-1">•</span>
             <span>Retrieve all Comments from the Comments API</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-gray-500 mt-1">•</span>
+            <span>Finding and analyzing YouTube video transcripts</span>
           </li>
         </ul>
         <p className="text-gray-600 mt-4 leading-relaxed">
