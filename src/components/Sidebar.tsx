@@ -5,33 +5,22 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useNavigation } from "@/lib/context/navigation";
 import { PlusIcon } from "lucide-react";
-import { useConvexAuth, useMutation, useQuery } from "convex/react";
+import { useConvexAuth, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
-import ChatRow from "./ChatRow";
 import { LoadingSpinner } from "./ui/LoadingSpinner";
+import ChatList from "./ChatList";
 
 export default function Sidebar() {
   const router = useRouter();
   const { isMobileNavOpen, closeMobileNav } = useNavigation();
   const { isLoading, isAuthenticated } = useConvexAuth();
 
-  const chats = useQuery(api.chats.listChats);
   const createChat = useMutation(api.chats.createChat);
-  const deleteChat = useMutation(api.chats.deleteChat);
 
   const handleNewChat = async () => {
     const chatId = await createChat({ title: "New Chat" });
     router.push(`/dashboard/chat/${chatId}`);
     closeMobileNav();
-  };
-
-  const handleDeleteChat = async (id: Id<"chats">) => {
-    await deleteChat({ id });
-    // If we're currently viewing this chat, redirect to dashboard
-    if (window.location.pathname.includes(id)) {
-      router.push("/dashboard");
-    }
   };
 
   return (
@@ -61,12 +50,8 @@ export default function Sidebar() {
           </Button>
         </div>
 
-        {isAuthenticated && chats && !isLoading ? (
-          <div className="flex-1 overflow-y-auto space-y-2.5 p-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
-            {chats.map((chat) => (
-              <ChatRow key={chat._id} chat={chat} onDelete={handleDeleteChat} />
-            ))}
-          </div>
+        {isAuthenticated && !isLoading ? (
+          <ChatList />
         ) : (
           <div className="flex-1 flex items-center justify-center text-gray-500 space-x-2.5">
             <LoadingSpinner />
