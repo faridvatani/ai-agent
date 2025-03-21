@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigation } from "@/lib/context/navigation";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
   const { isMobileNavOpen, setIsMobileNavOpen } = useNavigation();
@@ -15,7 +16,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-gray-300 bg-white/80 backdrop-blur-xl sticky top-0 z-50">
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between p-3">
         <div className="flex items-center gap-3">
           <Button
             variant="ghost"
@@ -37,8 +38,10 @@ export default function Header() {
             AI Agent
           </Link>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2.5">
+          <ModeToggle />
           <UserButton
+            showName
             appearance={{
               elements: {
                 avatarBox:
