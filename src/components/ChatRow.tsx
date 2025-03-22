@@ -27,7 +27,7 @@ export default function ChatRow({
 
   return (
     <div
-      className="group rounded-xl border border-gray-200 backdrop-blur-xs hover:bg-white/80 dark:hover:bg-gray-900 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
+      className="group rounded-xl border border-gray-300 dark:border-gray-700 backdrop-blur-xs hover:bg-white/80 dark:hover:bg-gray-900 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
       onClick={handleClick}
     >
       <div className="p-4">

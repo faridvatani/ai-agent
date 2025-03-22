@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   return (
-    <header className="border-b border-gray-300 bg-white/80 backdrop-blur-xl sticky top-0 z-50">
+    <header className="border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 backdrop-blur-xl sticky top-0 z-50">
       <div className="flex items-center justify-between p-3">
         <div className="flex items-center gap-3">
           <Button
@@ -33,7 +33,7 @@ export default function Header() {
           <Link
             href="/dashboard"
             passHref
-            className="text-xl font-semibold bg-linear-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
+            className="text-xl font-semibold bg-linear-to-r from-gray-800 to-gray-600 dark:from-gray-400 dark:to-gray-100 bg-clip-text text-transparent"
           >
             AI Agent
           </Link>
@@ -41,7 +41,6 @@ export default function Header() {
         <div className="flex items-center gap-2.5">
           <ModeToggle />
           <UserButton
-            showName
             appearance={{
               elements: {
                 avatarBox:

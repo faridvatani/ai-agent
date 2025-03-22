@@ -41,10 +41,10 @@ export default function Sidebar() {
           isMobileNavOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="p-3 border-b border-gray-300">
+        <div className="p-3 border-b border-gray-300 dark:border-gray-700">
           <Button
             onClick={handleNewChat}
-            className="w-full bg-gray-950 hover:bg-gray-900 dark:hover:bg-gray-900 text-gray-100 dark:text-white border border-gray-200 shadow-xs hover:shadow-sm transition-all duration-200"
+            className="w-full bg-gray-950 hover:bg-gray-900 dark:hover:bg-gray-900 text-gray-100 dark:text-white border border-gray-300 dark:border-gray-700 shadow-xs hover:shadow-sm transition-all duration-200"
           >
             <PlusIcon className="mr-2 size-4" /> New Chat
           </Button>
