@@ -239,7 +239,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
   return (
     <main className="flex flex-col h-[calc(100vh-(--spacing(14)))]">
       {/* Messages container */}
-      <section className="flex-1 overflow-y-auto bg-gray-50 p-2 md:p-0">
+      <section className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-950 p-2 md:p-0">
         <div className="max-w-4xl mx-auto p-4 space-y-3">
           {messages?.length === 0 && <WelcomeMessage />}
 
@@ -256,12 +256,12 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
           {/* Loading indicator */}
           {isLoading && !streamedResponse && (
             <div className="flex justify-start animate-in fade-in-0">
-              <div className="rounded-2xl px-4 py-3 bg-white text-gray-900 rounded-bl-none shadow-xs ring-1 ring-inset ring-gray-200">
+              <div className="rounded-2xl px-4 py-3 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 rounded-bl-none shadow-xs ring-1 ring-inset ring-gray-200 dark:ring-gray-800">
                 <div className="flex items-center gap-1.5">
                   {[0.3, 0.15, 0].map((delay, i) => (
                     <div
                       key={i}
-                      className="size-1.5 rounded-full bg-gray-400 animate-bounce"
+                      className="size-1.5 rounded-full bg-gray-400 dark:bg-gray-600 animate-bounce"
                       style={{ animationDelay: `-${delay}s` }}
                     />
                   ))}
@@ -274,7 +274,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
       </section>
 
       {/* Input form */}
-      <footer className="border-t bg-white p-4">
+      <footer className="border-t bg-white dark:bg-gray-900 p-4">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto relative">
           <div className="relative flex items-center">
             <input
@@ -282,7 +282,7 @@ const ChatInterface = ({ chatId, initialMessages }: ChatInterfaceProps) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Message AI Agent..."
-              className="flex-1 py-3 px-4 rounded-2xl border border-gray-200 focus:outline-hidden focus:ring-2 focus:ring-gray-500 focus:border-transparent pr-12 bg-gray-50 placeholder:text-gray-500"
+              className="flex-1 py-3 px-4 rounded-2xl border border-gray-200 dark:border-gray-800 focus:outline-hidden focus:ring-2 focus:ring-gray-500 focus:border-transparent pr-12 bg-gray-50 dark:bg-gray-900 placeholder:text-gray-500"
               disabled={isLoading}
             />
             <Button

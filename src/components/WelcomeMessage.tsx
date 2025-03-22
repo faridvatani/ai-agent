@@ -1,14 +1,14 @@
 export default function WelcomeMessage() {
   return (
     <div className="flex flex-col items-center justify-center h-full mt-10">
-      <div className="bg-white rounded-2xl shadow-xs ring-1 ring-inset ring-gray-200 px-6 py-5 max-w-lg w-full">
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+      <div className="bg-white dark:bg-gray-950 rounded-2xl shadow-xs ring-1 ring-inset ring-gray-200 dark:ring-gray-800 px-6 py-5 max-w-lg w-full">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           Welcome to AI Agent Chat! 👋
         </h2>
-        <p className="text-gray-600 mb-4 leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
           I can help you with:
         </p>
-        <ul className="space-y-2 text-gray-600">
+        <ul className="space-y-2 text-gray-600 dark:text-gray-400">
           <li className="flex items-start gap-2">
             <span className="text-gray-500 mt-1">•</span>
             <span>assesting with math agent</span>
