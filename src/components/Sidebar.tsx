@@ -44,7 +44,7 @@ export default function Sidebar() {
         <div className="p-3 border-b border-gray-300 dark:border-gray-700">
           <Button
             onClick={handleNewChat}
-            className="w-full bg-gray-950 hover:bg-gray-900 dark:hover:bg-gray-900 text-gray-100 dark:text-white border border-gray-300 dark:border-gray-700 shadow-xs hover:shadow-sm transition-all duration-200"
+            className="w-full bg-gradient-to-br from-gray-50 to-gray-200  dark:from-gray-800 dark:to-gray-950 hover:bg-gray-900 dark:hover:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 shadow-xs hover:shadow-sm transition-all duration-200"
           >
             <PlusIcon className="mr-2 size-4" /> New Chat
           </Button>
