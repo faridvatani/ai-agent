@@ -27,12 +27,12 @@ export default function ChatRow({
 
   return (
     <div
-      className="group rounded-xl border border-gray-200 bg-white/50 backdrop-blur-xs hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
+      className="group rounded-xl border border-gray-200 backdrop-blur-xs hover:bg-white/80 dark:hover:bg-gray-900 transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md"
       onClick={handleClick}
     >
       <div className="p-4">
         <div className="flex justify-between items-start">
-          <p className="text-sm text-gray-600 truncate flex-1 font-medium">
+          <p className="text-sm text-gray-600 dark:text-gray-100 truncate flex-1 font-medium">
             {lastMessage ? (
               <>
                 {lastMessage.role === "user" ? "You: " : "AI: "}

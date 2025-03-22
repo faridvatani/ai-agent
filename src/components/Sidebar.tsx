@@ -37,14 +37,14 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-gray-50/80 backdrop-blur-xl border-r border-gray-300 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
+          "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-white dark:bg-gray-950 backdrop-blur-xl border-r border-gray-300 dark:border-gray-700 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
           isMobileNavOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
         <div className="p-3 border-b border-gray-300">
           <Button
             onClick={handleNewChat}
-            className="w-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 shadow-xs hover:shadow-sm transition-all duration-200"
+            className="w-full bg-gray-950 hover:bg-gray-900 dark:hover:bg-gray-900 text-gray-100 dark:text-white border border-gray-200 shadow-xs hover:shadow-sm transition-all duration-200"
           >
             <PlusIcon className="mr-2 size-4" /> New Chat
           </Button>
@@ -53,7 +53,7 @@ export default function Sidebar() {
         {isAuthenticated && !isLoading ? (
           <ChatList />
         ) : (
-          <div className="flex-1 flex items-center justify-center text-gray-500 space-x-2.5">
+          <div className="flex-1 flex items-center justify-center text-gray-500 dark:text-gray-50 space-x-2.5">
             <LoadingSpinner />
             <span>Loading chats...</span>
           </div>

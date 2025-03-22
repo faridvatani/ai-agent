@@ -22,7 +22,7 @@ export default function ChatList() {
 
   if (!chats) {
     return (
-      <div className="flex-1 flex items-center justify-center text-gray-500 space-x-2.5">
+      <div className="flex-1 flex items-center justify-center text-gray-500 dark:text-gray-50 space-x-2.5">
         <LoadingSpinner />
         <span>Loading chats...</span>
       </div>
@@ -31,7 +31,7 @@ export default function ChatList() {
 
   if (chats.length === 0) {
     return (
-      <div className="flex-1 flex items-center justify-center text-gray-500">
+      <div className="flex-1 flex items-center justify-center text-gray-500 dark:text-gray-50">
         <span>No chats available.</span>
       </div>
     );
