@@ -20,7 +20,7 @@ export default function DashboardPage() {
               Start a new conversation or select an existing chat from the
               sidebar. Your AI assistant is ready to help with any task.
             </p>
-            <div className="pt-2 flex justify-center gap-4 text-sm text-gray-500">
+            <div className="pt-2 flex flex-col sm:flex-row justify-center items-center-safe gap-4 text-sm text-gray-500">
               <div className="flex items-center gap-1.5">
                 <div className="size-2 rounded-full bg-blue-500"></div>
                 Real-time responses
