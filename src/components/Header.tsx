@@ -31,7 +31,7 @@ export default function Header() {
             )}
           </Button>
           <Link
-            href="/dashboard"
+            href="/"
             passHref
             className="text-xl font-semibold bg-linear-to-r from-gray-800 to-gray-600 dark:from-gray-400 dark:to-gray-100 bg-clip-text text-transparent"
           >
