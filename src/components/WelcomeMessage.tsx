@@ -23,7 +23,7 @@ export default function WelcomeMessage() {
           </li>
           <li className="flex items-start gap-2">
             <span className="text-gray-500 mt-1">•</span>
-            <span>Processing data with JSONata</span>
+            <span>Processing data with JSON data</span>
           </li>
           <li className="flex items-start gap-2">
             <span className="text-gray-500 mt-1">•</span>
