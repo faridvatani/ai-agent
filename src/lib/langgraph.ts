@@ -1,8 +1,11 @@
-// initialise AI model
-// https://js.langchain.com/docs/integrations/chat/
-// https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching
-// https://langchain-ai.github.io/langgraphjs/concepts/
-import { ChatAnthropic } from "@langchain/anthropic";
+/* initialise AI model
+   - https://js.langchain.com/docs/integrations/chat/
+   - https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching
+   - https://js.langchain.com/docs/integrations/chat/openai/#prompt-caching
+   - https://langchain-ai.github.io/langgraphjs/concepts/
+*/
+
+import { ChatOpenAI } from "@langchain/openai";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import wxflows from "@wxflows/sdk/langchain";
 import {
@@ -20,7 +23,6 @@ import {
 import {
   AIMessage,
   BaseMessage,
-  HumanMessage,
   SystemMessage,
   trimMessages,
 } from "@langchain/core/messages";
@@ -48,17 +50,12 @@ const toolNode = new ToolNode(tools);
 
 // Connect to the LLM provider with better tool instructions
 const initialiseModel = () => {
-  const model = new ChatAnthropic({
-    modelName: "claude-3-5-sonnet-20241022",
-    anthropicApiKey: process.env.ANTHROPIC_API_KEY,
+  const model = new ChatOpenAI({
+    modelName: "gpt-4o-mini",
+    apiKey: process.env.OPENAI_API_KEY,
     temperature: 0.7, // Creativity level
     maxTokens: 4096, //  Max tokens for generate longer responses
     streaming: true, // Enable streaming for SSE
-    clientOptions: {
-      defaultHeaders: {
-        "anthropic-beta": "prompt-caching-2024-07-31",
-      },
-    },
     callbacks: [
       {
         handleLLMStart: async () => {
@@ -115,9 +112,7 @@ const createWorkflow = () => {
 
       // Create the prompt template with system message and messages placeholder
       const promptTemplate = ChatPromptTemplate.fromMessages([
-        new SystemMessage(systemContent, {
-          cache_control: { type: "ephemeral" }, // set a cache control (breakpoint) for the system message
-        }),
+        new SystemMessage(systemContent),
         new MessagesPlaceholder("messages"),
       ]);
 
@@ -138,48 +133,7 @@ const createWorkflow = () => {
     .addEdge("tools", "agent");
 };
 
-function addCachingHeaders(messages: BaseMessage[]): BaseMessage[] {
-  if (!messages.length) return messages;
-
-  // Create a copy of messages to avoid mutating the original
-  const cachedMessages = [...messages];
-
-  // Helper to add cache control
-  const addCache = (message: BaseMessage) => {
-    message.content = [
-      {
-        type: "text",
-        text: message.content as string,
-        cache_control: { type: "ephemeral" },
-      },
-    ];
-  };
-
-  // Cache the last message
-  // console.log("🤑🤑🤑 Caching last message");
-  addCache(cachedMessages.at(-1)!);
-
-  // Find and cache the second-to-last human message
-  let humanCount = 0;
-  for (let i = cachedMessages.length - 1; i >= 0; i--) {
-    if (cachedMessages[i] instanceof HumanMessage) {
-      humanCount++;
-      if (humanCount === 2) {
-        // console.log("🤑🤑🤑 Caching second-to-last human message");
-        addCache(cachedMessages[i]);
-        break;
-      }
-    }
-  }
-
-  return cachedMessages;
-}
-
 export async function submitQuestion(messages: BaseMessage[], chatId: string) {
-  // Add caching headers to messages
-  const cachedMessages = addCachingHeaders(messages);
-  // console.log("🔒🔒🔒 Messages:", cachedMessages);
-
   // Create workflow with chatId and onToken callback
   const workflow = createWorkflow();
 
@@ -188,7 +142,7 @@ export async function submitQuestion(messages: BaseMessage[], chatId: string) {
   const app = workflow.compile({ checkpointer });
 
   const stream = await app.streamEvents(
-    { messages: cachedMessages },
+    { messages },
     {
       version: "v2",
       configurable: { thread_id: chatId },
