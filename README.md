@@ -1,8 +1,11 @@
-# Ai Agent
+# AI Agent
+
+![ai-agent Screenshot](screenshot.png)
 An advanced AI chat app developed with Next.js, offering real-time messaging, and seamless tool coordination using LangChain and gpt-4o-mini model.
 
 ## Tech Stack
-- **Frontend Framework:** Next.js 15.2.5
+
+- **Frontend Framework:** Next.js 15.2.8
 - **UI Library:** React 19.1.0
 - **Styling:** Tailwind CSS V4
 - **Authentication:** Clerk
@@ -12,11 +15,13 @@ An advanced AI chat app developed with Next.js, offering real-time messaging, an
 - **Type Safety:** TypeScript
 
 ## Before You Get Started
+
 1. [Sign up for a Clerk account](https://clerk.com)
 2. [Sign up for a Convex account](https://convex.dev)
 3. [Sign up for a IBM Watsonx.ai account](https://wxflows.ibm.stepzen.com)
 
 ## Features
+
 - 🤖 Advanced AI chat interface with GPT-4o-mini
 - 🎨 Modern and responsive UI with Tailwind CSS
 - 🔐 Authentication with Clerk
@@ -29,36 +34,47 @@ An advanced AI chat app developed with Next.js, offering real-time messaging, an
 - 📚 Integration with various data sources via wxflows
 
 ## Advanced Features
+
 ### AI and Prompt Management
-   - **Context Window:** Efficient 4096 token context management
-   - **Tool-Augmented Responses:** Enhanced AI capabilities with custom tools
-   - **Context-Aware Conversations:** Intelligent conversation management
-   - **Prompt Caching:** Automatically speeds up responses by caching prompts via OpenAI
+
+- **Context Window:** Efficient 4096 token context management
+- **Tool-Augmented Responses:** Enhanced AI capabilities with custom tools
+- **Context-Aware Conversations:** Intelligent conversation management
+- **Prompt Caching:** Automatically speeds up responses by caching prompts via OpenAI
+
 ### Tool Integration
-   - **wxflows Integration:**
-      - Quick integration of various data sources
-      - Support for YouTube transcripts
-      - Google Books API integration
-      - Custom data source tooling
-      - Wikipedia API integration
-      - Math API integration
+
+- **wxflows Integration:**
+  - Quick integration of various data sources
+  - Support for YouTube transcripts
+  - Google Books API integration
+  - Custom data source tooling
+  - Wikipedia API integration
+  - Math API integration
+
 ### LangChain & LangGraph Features
-   - **State Management:** Sophisticated state handling with StateGraph
-   - **Tool Orchestration:** Advanced tool management with ToolNode
-   - **Memory Management:** Efficient context tracking with MemorySaver
-   - **Message Optimization:** Intelligent message trimming and context management
+
+- **State Management:** Sophisticated state handling with StateGraph
+- **Tool Orchestration:** Advanced tool management with ToolNode
+- **Memory Management:** Efficient context tracking with MemorySaver
+- **Message Optimization:** Intelligent message trimming and context management
+
 ### Streaming Implementation
-   - **Custom Streaming Solution:**
-      - Real-time token streaming
-      - Tool execution feedback
-      - Error handling for failed tool calls
-      - Workarounds for LangChainAdapter limitations
+
+- **Custom Streaming Solution:**
+  - Real-time token streaming
+  - Tool execution feedback
+  - Error handling for failed tool calls
+  - Workarounds for LangChainAdapter limitations
+
 ### Real-time Features
-   - **Live Updates:** Instant message delivery and updates
-   - **Tool Visualization:** Real-time tool interaction display
-   - **History Management:** Efficient message history tracking
+
+- **Live Updates:** Instant message delivery and updates
+- **Tool Visualization:** Real-time tool interaction display
+- **History Management:** Efficient message history tracking
 
 ## Prerequisites
+
 - Node.js (Latest LTS version recommended)
 - PNPM package manager or NPM/Yarn
 - Clerk account for authentication
@@ -68,6 +84,7 @@ An advanced AI chat app developed with Next.js, offering real-time messaging, an
 - wxflows CLI for tool integration
 
 ## Environment Variables
+
 Make sure to create a `.env.local` file in the root of your project and add the following environment variables:
 
 ```bash
@@ -81,12 +98,16 @@ WXFLOWS_APIKEY=<your-wxflows-apikey>
 ```
 
 ## Installation
+
 1. Clone the repository:
+
 ```bash
 git clone git@github.com:faridvatani/ai-agent.git
 cd ai-agent
 ```
+
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -96,7 +117,9 @@ pnpm install
 # or
 bun install
 ```
+
 3. Start the development server:
+
 ```bash
 npm run dev
 # or
@@ -157,7 +180,9 @@ wxflows import curl https://introspection.apis.stepzen.com/customers
 ```
 wxflows deploy
 ```
+
 ## Keywords
+
 ✅ **LangChain:** A framework for working with large language models (LLMs) that enables the use of tools, conversation history management, and more.<br>
 ✅ **LangGraph:** A tool for managing conversation flow and states using state graphs (StateGraph).<br>
 ✅ **systemMessage:** A message that instructs the model on how it should behave (such as guidelines or rules).<br>
