@@ -18,7 +18,7 @@ An advanced AI chat app developed with Next.js, offering real-time messaging, an
 
 1. [Sign up for a Clerk account](https://clerk.com)
 2. [Sign up for a Convex account](https://convex.dev)
-3. [Sign up for a IBM Watsonx.ai account](https://wxflows.ibm.stepzen.com)
+3. [Sign up for an IBM Watsonx.ai account](https://wxflows.ibm.stepzen.com)
 
 ## Features
 

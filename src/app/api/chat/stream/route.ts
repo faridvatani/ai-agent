@@ -87,7 +87,10 @@ export async function POST(req: Request) {
               const token = event.data.chunk;
               if (token) {
                 // Access the text property from the AIMessageChunk
-                const text = token.content.at(0)?.["text"];
+                const text =
+                  typeof token.content === "string"
+                    ? token.content
+                    : token.content.at(0)?.["text"];
                 if (text) {
                   await sendSSEMessage(writer, {
                     type: StreamMessageType.Token,
@@ -138,7 +141,6 @@ export async function POST(req: Request) {
         }
       }
     })();
-
 
     return response;
   } catch (error) {
