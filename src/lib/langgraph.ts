@@ -45,8 +45,16 @@ const toolClient = new wxflows({
 });
 
 // Retrieve the tools
-const tools = await toolClient.lcTools;
-const toolNode = new ToolNode(tools);
+let toolNode: ToolNode | null = null;
+
+async function getToolNode() {
+  if (toolNode) return toolNode;
+
+  const tools = await toolClient.lcTools;
+  toolNode = new ToolNode(tools);
+
+  return toolNode;
+}
 
 // Connect to the LLM provider with better tool instructions
 const initialiseModel = () => {
@@ -80,7 +88,7 @@ const initialiseModel = () => {
         // },
       },
     ],
-  }).bindTools(tools);
+  });
 
   return model;
 };
@@ -101,8 +109,12 @@ function shouldContinue(state: typeof MessagesAnnotation.State) {
 }
 
 // Define the a new graph
-const createWorkflow = () => {
+const createWorkflow = async () => {
   const model = initialiseModel();
+  const toolsNode = await getToolNode();
+
+  // bind tools after they are ready
+  model.bindTools(toolsNode.tools);
 
   // implement langgraph
   return new StateGraph(MessagesAnnotation)
@@ -127,7 +139,7 @@ const createWorkflow = () => {
 
       return { messages: [response] };
     })
-    .addNode("tools", toolNode)
+    .addNode("tools", toolsNode)
     .addEdge(START, "agent")
     .addConditionalEdges("agent", shouldContinue)
     .addEdge("tools", "agent");
@@ -135,20 +147,19 @@ const createWorkflow = () => {
 
 export async function submitQuestion(messages: BaseMessage[], chatId: string) {
   // Create workflow with chatId and onToken callback
-  const workflow = createWorkflow();
+  const workflow = await createWorkflow();
 
   // Create a checkpoint to save the state of the conversation
   const checkpointer = new MemorySaver();
   const app = workflow.compile({ checkpointer });
 
-  const stream = await app.streamEvents(
+  return app.streamEvents(
     { messages },
     {
       version: "v2",
       configurable: { thread_id: chatId },
       streamMode: "messages",
       runId: chatId,
-    },
+    }
   );
-  return stream;
 }
