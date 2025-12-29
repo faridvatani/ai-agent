@@ -45,14 +45,15 @@ const toolClient = new wxflows({
 });
 
 // Retrieve the tools
-let toolNode: ToolNode | null = null;
+let toolNode: Promise<ToolNode> | null = null;
 
-async function getToolNode() {
-  if (toolNode) return toolNode;
-
-  const tools = await toolClient.lcTools;
-  toolNode = new ToolNode(tools);
-
+function getToolNode(): Promise<ToolNode> {
+  if (!toolNode) {
+    toolNode = (async () => {
+      const tools = await toolClient.lcTools;
+      return new ToolNode(tools);
+    })();
+  }
   return toolNode;
 }
 
